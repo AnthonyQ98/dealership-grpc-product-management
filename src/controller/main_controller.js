@@ -13,10 +13,10 @@ const dealershipProto = grpc.loadPackageDefinition(dealershipPackageDefinition).
 // Function to display the main menu options
 function showMainMenu() {
     console.log("Dealership Product Management:");
-    console.log("1) Get car");
-    console.log("2) Update car");
-    console.log("3) Add car");
-    console.log("4) List cars");
+    console.log("1) Get car (UNARY)");
+    console.log("2) Update car (BIDIRECTIONAL)");
+    console.log("3) Add car (CLIENT-SIDE STREAM)");
+    console.log("4) List cars (SERVER-SIDE STREAM)");
     console.log("Press anything else to exit.")
 }
 
