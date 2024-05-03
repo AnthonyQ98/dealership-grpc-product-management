@@ -51,6 +51,16 @@ function addCar(call, callback) {
         call.on('data', function (request) {
             // Process each incoming car (placeholder logic: log car details)
             console.log('Received car:', request.car);
+
+            // Get the id for the new car
+            let id;
+            if (cars.length > 0) {
+                id = parseInt(cars[cars.length - 1].id) + 1;
+            } else {
+                // If the cars array is empty, set id to 1
+                id = 1;
+            }
+            request.car.id = id.toString();
             cars.push(request.car);
         });
 
@@ -85,7 +95,7 @@ function updateCarInventory(call) {
             call.write({ success: false, message: `Car with ID ${carId} not found` });
         } else {
             // Update the quantity of the car
-            carToUpdate.quantity += quantityDelta;
+            carToUpdate.quantity = quantityDelta;
 
             console.log(`Updated inventory of car ${carId}. New quantity: ${carToUpdate.quantity}`);
 

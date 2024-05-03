@@ -94,10 +94,26 @@ async function handleAddCar() {
                 break;
             }
 
+            const carPrice = await new Promise((resolve) => readline.question('Enter Price (press Enter to exit): ', resolve));
+            if (!carPrice) {
+                // If the user enters an empty string, end the streaming
+                call.end();
+                break;
+            }
+
+            const carQuantity = await new Promise((resolve) => readline.question('Enter Quantity (press Enter to exit): ', resolve));
+            if (!carQuantity) {
+                // If the user enters an empty string, end the streaming
+                call.end();
+                break;
+            }
+
             // Prepare request body with car details
             const request = {
                 car: {
-                    name: carName
+                    name: carName,
+                    price: parseFloat(carPrice),
+                    quantity: parseInt(carQuantity)
                 }
             };
 
