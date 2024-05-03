@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package stock_management;
+
+service DealershipService {
+    // Here I have used the unary rpc - 'GetCar' implies a singular Car. There is no need for this to be streaming as its specific to a singular Car. Unary RPC makes the most sense.
+    rpc GetCarDetails(GetCarDetailsRequest) returns (CarDetailsResponse) {}
+
+    // Here I have used the server-side streaming rpc - the server may continously load Cars to the client, so it makes sense for this to be server-side streaming.
+    rpc ListAllCars(ListAllCarsRequest) returns (stream Car) {}
+
+    // Here I have used the client-side streaming rpc - clients should be able to consistently add Cars, so this makes sense in this use case.
+    rpc AddCar(stream AddCarRequest) returns (AddCarResponse) {}
+
+    // Here I have used the bidirectional rpc - this makes logical sense as both the server and client should be capable of making modifications to this.
+    rpc UpdateCarInventory(stream UpdateCarInventoryRequest) returns (stream UpdateCarInventoryResponse) {}
+}
+
+
+message Car {
+    string id = 1;
+    string name = 2;
+    float price = 3;
+    int32 quantity = 4;
+}
+
+message GetCarDetailsRequest {
+    string car_id = 1;
+}
+
+message CarDetailsResponse {
+    Car car = 1;
+}
+
+message ListAllCarsRequest {}
+
+message AddCarRequest {
+    Car car = 1;
+}
+
+message AddCarResponse {
+    bool success = 1;
+}
+
+message UpdateCarInventoryRequest {
+    string car_id = 1;
+    int32 quantity_delta = 2;
+}
+
+message UpdateCarInventoryResponse {
+    bool success = 1;
+}
