@@ -17,10 +17,10 @@ const serverAddr = '0.0.0.0:50051';
 
 // Create an object containing service implementation
 const services = {
-    Update: updateCarInventory,
-    Add: addCar,
-    List: listAllCars, 
-    Get: getCarDetails,
+    UpdateCarInventory: updateCarInventory,
+    AddCar: addCar,
+    ListAllCars: listAllCars, 
+    GetCarDetails: getCarDetails,
 };
 
 // Add service to the gRPC server
