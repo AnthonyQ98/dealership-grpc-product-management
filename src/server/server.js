@@ -7,7 +7,7 @@ const { updateCarInventory, addCar, listAllCars, getCarDetails } = require('../s
 
 // Load protocol buffer for dealership service
 const dealershipPackageDefinition = protoloader.loadSync('protos/product_service.proto', {});
-const dealershipProto = grpc.loadPackageDefinition(dealershipPackageDefinition).stock_management;
+const dealershipProto = grpc.loadPackageDefinition(dealershipPackageDefinition).StockManagement;
 
 // Create gRPC server
 const server = new grpc.Server();

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package stock_management;
+package StockManagement;
 
 service DealershipService {
     // Here I have used the unary rpc - 'GetCar' implies a singular Car. There is no need for this to be streaming as its specific to a singular Car. Unary RPC makes the most sense.
@@ -25,7 +25,7 @@ message Car {
 }
 
 message GetCarDetailsRequest {
-    string car_id = 1;
+    string carId = 1;
 }
 
 message CarDetailsResponse {
@@ -43,8 +43,8 @@ message AddCarResponse {
 }
 
 message UpdateCarInventoryRequest {
-    string car_id = 1;
-    int32 quantity_delta = 2;
+    string carId = 1;
+    int32 quantityDelta = 2;
 }
 
 message UpdateCarInventoryResponse {
