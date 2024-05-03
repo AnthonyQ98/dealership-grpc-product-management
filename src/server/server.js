@@ -24,7 +24,7 @@ const services = {
 };
 
 // Add service to the gRPC server
-server.addService(dealershipProto.service, services);
+server.addService(dealershipProto.DealershipService.service, services);
 
 
 // Bind the server to the specified address and start it
